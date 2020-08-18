@@ -605,7 +605,7 @@ void NeoPixel::bars(std::vector<Color_t>& scheme, int width, int speedMS){
     show();
 }
 
-void NeoPixel::effectsDemo() {
+void NeoPixel:: effectsDemo() {
     int i, j, ptr;
     float k;
 
