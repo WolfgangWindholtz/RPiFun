@@ -264,7 +264,7 @@ void NeoPixel::clearLEDBuffer(){
     Color_t curLed;
     for(i=0; i<numLEDs; i++) {
         std::cout << i <<  "numLEDs" << std::endl ; 
-        curLed = LEDBuffer[i];
+        curLed = this->LEDBuffer[i];
         std::cout << "curLED" << std::endl ; 
         curLed.r = 0;
         curLed.g = 0;
