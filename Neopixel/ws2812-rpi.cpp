@@ -39,8 +39,15 @@ NeoPixel::NeoPixel(unsigned int n)
     : numLEDs(n)
 {
     std::cout << "began compling" << std::endl; 
-    LEDBuffer.resize(n);
+    
+    LEDBuffer = *(new std::vector<Color_t>(n));
+
+    for(int i = 0; i < n ; i++){
+        LEDBuffer[i] = *(new Color_t()); 
+    }
+
     std::cout << "resize buffer" << n << std::endl; 
+    std::cout << LEDBuffer[1].r << std::endl;
     brightness=DEFAULT_BRIGHTNESS;
 
     initHardware();
