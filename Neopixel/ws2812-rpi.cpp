@@ -45,7 +45,7 @@ NeoPixel::NeoPixel(unsigned int n)
 
     initHardware();
     std::cout << "Hardware initialize" << n << std::endl; 
-    this.clearLEDBuffer();
+    this->clearLEDBuffer();
     std::cout << "LED buffer clear" << n << std::endl; 
 }
 
