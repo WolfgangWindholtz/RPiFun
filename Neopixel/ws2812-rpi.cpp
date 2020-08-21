@@ -23,6 +23,8 @@
 ###############################################################################
 */
 #include "ws2812-rpi.h"
+#include <iostream>
+
 
 struct control_data_s* NeoPixel::ctl=0;
 uint8_t* NeoPixel::virtbase=0;
@@ -36,11 +38,15 @@ volatile unsigned int* NeoPixel::gpio_reg=0;
 NeoPixel::NeoPixel(unsigned int n)
     : numLEDs(n)
 {
+    std::cout << "began compling" << std::endl; 
     LEDBuffer.resize(n);
+    std::cout << "resize buffer" << n << std::endl; 
     brightness=DEFAULT_BRIGHTNESS;
 
     initHardware();
+    std::cout << "Hardware initialize" << n << std::endl; 
     clearLEDBuffer();
+    std::cout << "LED buffer clear" << n << std::endl; 
 }
 
 NeoPixel::~NeoPixel(){
@@ -60,20 +66,24 @@ void NeoPixel::show(){
     Color_t color;
 
     for(i=0; i<numLEDs; i++) {
+        std::cout << "showing LEDs " << std::endl; 
         LEDBuffer[i].r *= brightness;
         LEDBuffer[i].g *= brightness;
         LEDBuffer[i].b *= brightness;
         colorBits = ((unsigned int)LEDBuffer[i].r << 8) | ((unsigned int)LEDBuffer[i].g << 16) | LEDBuffer[i].b;
 
         for(j=23; j>=0; j--) {
+            std::cout << "PWM" << std::endl; 
             colorBit = (colorBits & (1 << j)) ? 1 : 0;
             switch(colorBit) {
                 case 1:
+                    std::cout << "1" << std::endl;
                     setPWMBit(wireBit++, 1);
                     setPWMBit(wireBit++, 1);
                     setPWMBit(wireBit++, 0);
                     break;
                 case 0:
+                    std::cout << "0" << std::endl;
                     setPWMBit(wireBit++, 1);
                     setPWMBit(wireBit++, 0);
                     setPWMBit(wireBit++, 0);
@@ -619,7 +629,7 @@ void NeoPixel:: effectsDemo() {
     rainbow(5);
     rainbowCycle(5);
     theaterChaseRainbow(50);
-
+    std::cout << "line 628" << std::endl; 
     // Watermelon fade :)
     for(k=0; k<0.5; k+=.01) {
         ptr=0;
@@ -629,6 +639,7 @@ void NeoPixel:: effectsDemo() {
         }
         show();
     }
+    std::cout << "line 638" << std::endl; 
     for(k=0.5; k>=0; k-=.01) {
         ptr=0;
         setBrightness(k);
@@ -637,6 +648,7 @@ void NeoPixel:: effectsDemo() {
         }
         show();
     }
+    std::cout << "line 648" << std::endl; 
     usleep(1000);
 
     // Random color fade
@@ -678,4 +690,5 @@ void NeoPixel:: effectsDemo() {
         lastGreen = green;
         lastBlue = blue;
     }
+    std::cout << "finishx" << std::endl; 
 }
