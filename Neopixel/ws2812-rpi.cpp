@@ -246,7 +246,7 @@ void* NeoPixel::map_peripheral(uint32_t base, uint32_t len){
     void * vaddr;
 
     if (fd < 0)
-        fatal("Failed to open /dev/mem: %m\n");
+       // fatal("Failed to open /dev/mem: %m\n");
     vaddr = mmap(NULL, len, PROT_READ|PROT_WRITE, MAP_SHARED, fd, base);
     if (vaddr == MAP_FAILED)
         //fatal("Failed to map peripheral at 0x%08x: %m\n", base);
