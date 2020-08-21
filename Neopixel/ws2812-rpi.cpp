@@ -262,6 +262,7 @@ void NeoPixel::clearPWMBuffer(){
 void NeoPixel::clearLEDBuffer(){
     int i;
     for(i=0; i<numLEDs; i++) {
+        std::cout << i <<  "numLEDs" << std::endl ; 
         LEDBuffer[i].r = 0;
         LEDBuffer[i].g = 0;
         LEDBuffer[i].b = 0;
