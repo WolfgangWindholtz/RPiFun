@@ -45,7 +45,7 @@ NeoPixel::NeoPixel(unsigned int n)
 
     initHardware();
     std::cout << "Hardware initialize" << n << std::endl; 
-    clearLEDBuffer();
+    this.clearLEDBuffer();
     std::cout << "LED buffer clear" << n << std::endl; 
 }
 
@@ -261,11 +261,14 @@ void NeoPixel::clearPWMBuffer(){
 
 void NeoPixel::clearLEDBuffer(){
     int i;
+    Color_t curLed;
     for(i=0; i<numLEDs; i++) {
         std::cout << i <<  "numLEDs" << std::endl ; 
-        LEDBuffer[i].r = 0;
-        LEDBuffer[i].g = 0;
-        LEDBuffer[i].b = 0;
+        curLed = LEDBuffer[i];
+        std::cout << "curLED" << std::endl ; 
+        curLed.r = 0;
+        curLed.g = 0;
+        curLed.b = 0;
     }    
 }
 
