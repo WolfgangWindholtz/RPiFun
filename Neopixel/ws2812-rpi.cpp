@@ -336,7 +336,7 @@ void NeoPixel::initHardware(){
         0);
 
     if (virtbase == MAP_FAILED) {
-        fatal("Failed to mmap physical pages: %m\n");
+        //fatal("Failed to mmap physical pages: %m\n");
     }
 
     if ((unsigned long)virtbase & (PAGE_SIZE-1)) {
