@@ -47,6 +47,7 @@ NeoPixel::NeoPixel(unsigned int n)
     }
 
     std::cout << "resize buffer" << n << std::endl; 
+    LEDBuffer[1].r = 'k';
     std::cout << "mon "<<LEDBuffer[1].r << std::endl;
     brightness=DEFAULT_BRIGHTNESS;
 
