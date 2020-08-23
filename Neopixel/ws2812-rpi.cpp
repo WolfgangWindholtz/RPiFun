@@ -244,7 +244,7 @@ unsigned int NeoPixel::mem_phys_to_virt(uint32_t phys){
             return (uint32_t)virtbase + i * PAGE_SIZE + pg_offset;
         }
     }
-    //fatal("Failed to reverse map phys addr %08x\n", phys);
+    fatal("Failed to reverse map phys addr %08x\n", phys);
 
     return 0;    
 }
@@ -254,10 +254,10 @@ void* NeoPixel::map_peripheral(uint32_t base, uint32_t len){
     void * vaddr;
 
     if (fd < 0)
-       // fatal("Failed to open /dev/mem: %m\n");
+       fatal("Failed to open /dev/mem: %m\n");
     vaddr = mmap(NULL, len, PROT_READ|PROT_WRITE, MAP_SHARED, fd, base);
     if (vaddr == MAP_FAILED)
-        //fatal("Failed to map peripheral at 0x%08x: %m\n", base);
+        fatal("Failed to map peripheral at 0x%08x: %m\n", base);
     close(fd);
 
     return vaddr;    
@@ -348,28 +348,28 @@ void NeoPixel::initHardware(){
         0);
 
     if (virtbase == MAP_FAILED) {
-        //fatal("Failed to mmap physical pages: %m\n");
+        fatal("Failed to mmap physical pages: %m\n");
     }
 
     if ((unsigned long)virtbase & (PAGE_SIZE-1)) {
-        //fatal("Virtual address is not page aligned\n");
+        fatal("Virtual address is not page aligned\n");
     }
 
     // Allocate page map (pointers to the control block(s) and data for each CB
     page_map =(page_map_t*) malloc(NUM_PAGES * sizeof(*page_map));
     if (page_map == 0)
-        //fatal("Failed to malloc page_map: %m\n");
+        fatal("Failed to malloc page_map: %m\n");
 
     pid = getpid();
     sprintf(pagemap_fn, "/proc/%d/pagemap", pid);
     fd = open(pagemap_fn, O_RDONLY);
 
     if (fd < 0) {
-        //fatal("Failed to open %s: %m\n", pagemap_fn);
+        fatal("Failed to open %s: %m\n", pagemap_fn);
     }
 
     if (lseek(fd, (unsigned long)virtbase >> 9, SEEK_SET) != (unsigned long)virtbase >> 9) {
-        //fatal("Failed to seek on %s: %m\n", pagemap_fn);
+        fatal("Failed to seek on %s: %m\n", pagemap_fn);
     }
 
     for (i = 0; i < NUM_PAGES; i++) {
@@ -379,11 +379,11 @@ void NeoPixel::initHardware(){
         page_map[i].virtaddr[0] = 0;
 
         if (read(fd, &pfn, sizeof(pfn)) != sizeof(pfn)) {
-            //fatal("Failed to read %s: %m\n", pagemap_fn);
+            fatal("Failed to read %s: %m\n", pagemap_fn);
         }
 
         if ((pfn >> 55)&0xfbf != 0x10c) {
-            //fatal("Page %d not present (pfn 0x%016llx)\n", i, pfn);
+            fatal("Page %d not present (pfn 0x%016llx)\n", i, pfn);
         }
 
         page_map[i].physaddr = (unsigned int)pfn << PAGE_SHIFT | 0x40000000;
