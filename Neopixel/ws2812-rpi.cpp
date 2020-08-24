@@ -360,7 +360,7 @@ void NeoPixel::initHardware(){
     if (page_map == 0)
         fatal("Failed to malloc page_map: %m\n");
 
-    pid = getpid();
+    pid = getpi3d();
     sprintf(pagemap_fn, "/proc/%d/pagemap", pid);
     fd = open(pagemap_fn, O_RDONLY);
 
