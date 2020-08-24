@@ -321,8 +321,11 @@ void NeoPixel::initHardware(){
     int fd;
     char pagemap_fn[64];
 
+    std::cout << "variables " << std::endl;
+
     // Clear the PWM buffer
     clearPWMBuffer();
+    std::cout << " Clear the PWM buffer" << std::endl;
 
     // Set up peripheral access
     dma_reg = (unsigned int*) map_peripheral(DMA_BASE, DMA_LEN);
@@ -331,9 +334,12 @@ void NeoPixel::initHardware(){
     clk_reg = (unsigned int*)map_peripheral(CLK_BASE, CLK_LEN);
     gpio_reg = (unsigned int*)map_peripheral(GPIO_BASE, GPIO_LEN);
 
+    std::cout << " Set up peripherals" << std::endl;
+
 
     // Set PWM alternate function for GPIO18
     SET_GPIO_ALT(18, 5);
+    std::cout << " Set PWM alternate function for GPIO18" << std::endl;
 
     // Allocate memory for the DMA control block & data to be sent
     virtbase = (uint8_t*) mmap(
@@ -346,6 +352,8 @@ void NeoPixel::initHardware(){
         MAP_LOCKED,
         -1,
         0);
+
+        std::cout << " Allocate memory for the DMA control block & data to be sent" << std::endl;
 
     if (virtbase == MAP_FAILED) {
         fatal("Failed to mmap physical pages: %m\n");
@@ -360,9 +368,13 @@ void NeoPixel::initHardware(){
     if (page_map == 0)
         fatal("Failed to malloc page_map: %m\n");
 
-    pid = getpi3d();
+     std::cout << " Allocate page map (pointers to the control block(s) and data for each CB" << std::endl;   
+
+    pid = getpid();
     sprintf(pagemap_fn, "/proc/%d/pagemap", pid);
     fd = open(pagemap_fn, O_RDONLY);
+
+    std::cout << "pid set" << std::endl;   
 
     if (fd < 0) {
         fatal("Failed to open %s: %m\n", pagemap_fn);
@@ -372,6 +384,8 @@ void NeoPixel::initHardware(){
         fatal("Failed to seek on %s: %m\n", pagemap_fn);
     }
 
+
+    std::cout << "line 388" << std::endl;
     for (i = 0; i < NUM_PAGES; i++) {
         uint64_t pfn;
         page_map[i].virtaddr = virtbase + i * PAGE_SIZE;
@@ -390,6 +404,11 @@ void NeoPixel::initHardware(){
     }
 
     // Set up control block
+
+
+    std::cout << "Set up control block" << std::endl;
+
+
     ctl = (struct control_data_s *)virtbase;
     dma_cb_t *cbp = ctl->cb;
     unsigned int phys_pwm_fifo_addr = 0x7e20c000 + 0x18;
@@ -417,6 +436,10 @@ void NeoPixel::initHardware(){
 
 
     // PWM Clock
+
+    std::cout << "PWM Clock line 440" << std::endl;
+
+
     clk_reg[PWM_CLK_CNTL] = 0x5A000000 | (1 << 5);
     usleep(100);
 
@@ -433,6 +456,9 @@ void NeoPixel::initHardware(){
 
 
     // PWM
+
+    std::cout << "PWM " << std::endl;
+
     pwm_reg[PWM_CTL] = 0;
 
     pwm_reg[PWM_RNG1] = 32;
@@ -456,6 +482,8 @@ void NeoPixel::initHardware(){
     CLRBIT(pwm_reg[PWM_CTL], PWM_CTL_POLA1);
     usleep(100);
     
+    std::cout << "Set Bit " << std::endl;
+
     SETBIT(pwm_reg[PWM_CTL], PWM_CTL_MODE1);
     usleep(100);
     
