@@ -74,24 +74,24 @@ void NeoPixel::show(){
     Color_t color;
 
     for(i=0; i<numLEDs; i++) {
-        std::cout << "showing LEDs " << std::endl; 
+        
         LEDBuffer[i].r *= brightness;
         LEDBuffer[i].g *= brightness;
         LEDBuffer[i].b *= brightness;
         colorBits = ((unsigned int)LEDBuffer[i].r << 8) | ((unsigned int)LEDBuffer[i].g << 16) | LEDBuffer[i].b;
 
         for(j=23; j>=0; j--) {
-            std::cout << "PWM" << std::endl; 
+            //std::cout << "PWM" << std::endl; 
             colorBit = (colorBits & (1 << j)) ? 1 : 0;
             switch(colorBit) {
                 case 1:
-                    std::cout << "1" << std::endl;
+                    //std::cout << "1" << std::endl;
                     setPWMBit(wireBit++, 1);
                     setPWMBit(wireBit++, 1);
                     setPWMBit(wireBit++, 0);
                     break;
                 case 0:
-                    std::cout << "0" << std::endl;
+                    //std::cout << "0" << std::endl;
                     setPWMBit(wireBit++, 1);
                     setPWMBit(wireBit++, 0);
                     setPWMBit(wireBit++, 0);
