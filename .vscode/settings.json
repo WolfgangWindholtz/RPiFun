@@ -48,5 +48,7 @@
         "stdexcept": "cpp",
         "streambuf": "cpp",
         "typeinfo": "cpp"
-    }
+    },
+    "python.pythonPath": "/usr/bin/python",
+    "python.formatting.provider": "black"
 }

@@ -78,6 +78,13 @@ def rainbow_cycle(wait):
         pixels.show()
         time.sleep(wait)
 
+def clear():
+    for j in range(255):
+        for i in range(num_pixels):
+            
+            pixels[i] = (0,0,0)
+             
+
 
 
 # Comment this line out if you have RGBW/GRBW NeoPixels
@@ -103,6 +110,8 @@ time.sleep(1)
 
 while True:
    showBoard(Tic)
+   time.sleep(1)
+   time.sleep(1)
    time.sleep(1)
    rainbow_cycle(0.001)  # rainbow cycle with 1ms delay per step
 
