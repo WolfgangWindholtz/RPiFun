@@ -29,9 +29,9 @@ def showBoard( Tac):
     i = 8
     for row in range(row):
             for col in range(col):
-                if(Tac.board == 'x'):
+                if(Tac.board[row][col] == 'x'):
                     pixels[i] = (100,0,0)
-                if(Tac.board == 'o'):
+                if(Tac.board[row][col] == 'o'):
                     pixels[i] = (0,100,0)
                 else:
                     pixels[i] = (0,0,100)
