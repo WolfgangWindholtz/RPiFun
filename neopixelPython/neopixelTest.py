@@ -83,6 +83,7 @@ def clear():
         for i in range(num_pixels):
             
             pixels[i] = (0,0,0)
+    pixels.show()
              
 
 
@@ -109,10 +110,16 @@ pixels.show()
 time.sleep(1)
 
 while True:
-   showBoard(Tic)
-   time.sleep(1)
-   time.sleep(1)
-   time.sleep(1)
-   rainbow_cycle(0.001)  # rainbow cycle with 1ms delay per step
+
+    clear()
+    time.sleep(1)
+    time.sleep(1)
+    time.sleep(1)
+
+    showBoard(Tic)
+    time.sleep(1)
+    time.sleep(1)
+    time.sleep(1)
+    rainbow_cycle(0.001)  # rainbow cycle with 1ms delay per step
 
 
