@@ -1,6 +1,5 @@
-class MyClass:
-    """A simple example class"""
-
+class Tictactoe:
+   
     def __init__(self):
         self.board = [ [' ',' ',' '],[' ',' ',' '],[' ',' ',' ']]
 
@@ -42,14 +41,14 @@ class MyClass:
                 self.board[row][col] == p and
                 self.board[row][col] == p 
              ):
-                ret = True; 
+                ret = True
               
 
             if( self.board[row][col] == p and 
                 self.board[row][col] == p and
                 self.board[row][col] == p
             ):
-                    ret = True; 
+                    ret = True
             
         return ret    
             
@@ -57,9 +56,3 @@ class MyClass:
                  
 
     
-x = MyClass()
-x.placePeice('x',1,1)
-x.placePeice('x',1,0)
-x.placePeice('x',1,2)
-print(x.checkWin('x'))
-x.printArr()
