@@ -26,7 +26,7 @@ Tic = Tictactoe.Tictactoe()
 
 def showBoard( Tac):
     row , col = 3,3
-    i = 7
+    i = 8
     for row in range(row):
             for col in range(col):
                 if(Tac.board == 'x'):
