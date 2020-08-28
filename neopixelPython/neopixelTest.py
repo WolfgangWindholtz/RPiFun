@@ -29,13 +29,18 @@ def showBoard( Tac):
     i = 8
     for row in range(row):
             for col in range(col):
+                print(" pixels " + i )
                 if(Tac.board[row][col] == 'x'):
                     pixels[i] = (100,0,0)
+
                 if(Tac.board[row][col] == 'o'):
                     pixels[i] = (0,100,0)
+
                 else:
                     pixels[i] = (0,0,100)
+
                 i = i + 1      
+
             i = i+5
     pixels.show()
     time.sleep(1)
@@ -79,10 +84,9 @@ def rainbow_cycle(wait):
         time.sleep(wait)
 
 def clear():
-    for j in range(255):
-        for i in range(num_pixels):
-            
-            pixels[i] = (0,0,0)
+    for i in range(num_pixels):
+        
+        pixels[i] = (0,0,0)
     pixels.show()
              
 
@@ -120,6 +124,6 @@ while True:
     time.sleep(1)
     time.sleep(1)
     time.sleep(1)
-    rainbow_cycle(0.001)  # rainbow cycle with 1ms delay per step
+      # rainbow cycle with 1ms delay per step
 
 
