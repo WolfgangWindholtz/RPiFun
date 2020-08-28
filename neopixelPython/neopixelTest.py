@@ -27,8 +27,8 @@ Tic = Tictactoe.Tictactoe()
 def showBoard( Tac):
     row , col = 3,3
     i = 8
-    for row in range(row):
-            for col in range(col):
+    for row in range(3):
+            for col in range(3):
                 print( i )
                 if(Tac.board[row][col] == 'x'):
                     pixels[i] = (100,0,0)
@@ -41,7 +41,7 @@ def showBoard( Tac):
 
                 i = i + 1      
 
-            i = i+5
+            i = i+6
     pixels.show()
     time.sleep(1)
               
