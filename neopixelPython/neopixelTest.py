@@ -112,21 +112,22 @@ pixels.fill((0, 0, 255))
 pixels.show()
 time.sleep(1)
 
+ 
 while True:
 
-    x = input("enter n for new game , q to quit")
-    if(x == 'n'):
+    x = (input("enter n for new game , q to quit \n"))
+    if(x == "n"):
         while True:
-            b = input("enter x to place x or o to place o, q to quit")
-            if(b == 'x'):
-                row = input("what row? ")
-                col = input("what col? ")
-                Tic.placePeice('x',row,col)
-            elif(b == 'o'):
-                row = input("what row? ")
-                col = input("what col? ")  
-                Tic.placePeice('o',row,col)
-            elif(b == 'q'):
+            b = input(" enter x to place x or o to place o, q to quit ")
+            if(b == "x"):
+                row = int(input("what row? "))
+                col = int(input("what col? "))
+                Tic.placePeice("x",row,col)
+            elif(b == "o"):
+                row = int(input("what row? "))
+                col = int(input("what col? "))  
+                Tic.placePeice("o",row,col)
+            elif(b == "q"):
                 print("you quit")
                 break
             else:
@@ -135,19 +136,18 @@ while True:
             Tic.printArr()
             showBoard(Tic)
             pixels.show()
-            time.sleep(1)
+            time.sleep(3)
 
-            if(Tic.checkWin('x')):
+            if(Tic.checkWin("x")):
                 print(" x won! good job")
-            if(Tic.checkWin('o')):
+            if(Tic.checkWin("o")):
                 print(" o won! good job")
     
-    elif(x == 'q'):
+    elif(x == "q"):
         break
 
     else:
         print("invalid input")
-    
                       
         
 
