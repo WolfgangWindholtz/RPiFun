@@ -36,7 +36,7 @@ def showBoard( Tac):
                     pixels[i] = (0,100,0)
 
                 else:
-                    pixels[i] = (0,0,100)
+                    pixels[i] = (50,50,50)
 
                 i = i + 1      
 
