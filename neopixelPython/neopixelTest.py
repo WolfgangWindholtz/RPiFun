@@ -114,6 +114,10 @@ time.sleep(1)
 
  
 while True:
+    clear()
+    pixels.show()
+
+    time.sleep(1)
 
     x = (input("enter n for new game , q to quit \n"))
     if(x == "n"):
@@ -136,12 +140,14 @@ while True:
             Tic.printArr()
             showBoard(Tic)
             pixels.show()
-            time.sleep(3)
+            
 
             if(Tic.checkWin("x")):
                 print(" x won! good job")
+                break
             if(Tic.checkWin("o")):
                 print(" o won! good job")
+                break
     
     elif(x == "q"):
         break
@@ -153,8 +159,7 @@ while True:
 
     
 
-
-showBoard(Tic)
+clear()
 pixels.show()
 time.sleep(1)   
       
