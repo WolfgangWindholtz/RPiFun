@@ -32,7 +32,7 @@ def showBoard( Tac):
                 if(Tac.board[row][col] == 'x'):
                     pixels[i] = (100,0,0)
 
-                if(Tac.board[row][col] == 'o'):
+                elif(Tac.board[row][col] == 'o'):
                     pixels[i] = (0,100,0)
 
                 else:
@@ -126,11 +126,11 @@ while True:
             if(b == "x"):
                 row = int(input("what row? "))
                 col = int(input("what col? "))
-                Tic.placePeice("x",row,col)
+                Tic.placePeice('x',row,col)
             elif(b == "o"):
                 row = int(input("what row? "))
                 col = int(input("what col? "))  
-                Tic.placePeice("o",row,col)
+                Tic.placePeice('o',row,col)
             elif(b == "q"):
                 print("you quit")
                 break
