@@ -2,9 +2,9 @@
 import tkinter as tk  
 
 # Simple test for NeoPixels on Raspberry Pi
-import time
-import board
-import neopixel
+#import time
+#import board
+#import neopixel
 import Tictactoe
 
 class Application(tk.Frame):              
@@ -18,31 +18,31 @@ class Application(tk.Frame):
             command=self.quit)
 
         self.Button1 = tk.Button(self, text='Quit',
-            command=self.haha(1))
+            command=self.haha)
 
         self.Button2 = tk.Button(self, text='Quit',
-            command=self.haha(1))
+            command=self.haha)
 
         self.Button3 = tk.Button(self, text='Quit',
-            command=self.haha(1))
+            command=self.haha)
 
         self.Button4 = tk.Button(self, text='Quit',
-            command=self.haha(1))
+            command=self.haha)
 
         self.Button5 = tk.Button(self, text='Quit',
-            command=self.haha(1))
+            command=self.haha)
 
         self.Button6 = tk.Button(self, text='Quit',
-            command=self.haha(1))
+            command=(self.haha ) )
 
         self.Button7 = tk.Button(self, text='Quit',
-            command=self.haha(1))
+            command=self.haha)
 
         self.Button8 = tk.Button(self, text='Quit',
-            command=self.haha(1))
+            command=self.haha)
 
         self.Button9 = tk.Button(self, text='Quit',
-            command=self.haha(1))                    
+            command=self.haha)                   
 
 
         self.quitButton.grid(column = 0 ,row = 0 )
@@ -57,7 +57,7 @@ class Application(tk.Frame):
         self.Button9.grid(column = 3 ,row = 2 )
 
 
-    def haha(self,jeex):
+    def haha(self):
         print(jeex)             
 
 app = Application()                       
