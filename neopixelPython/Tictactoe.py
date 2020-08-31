@@ -2,6 +2,8 @@ class Tictactoe:
    
     def __init__(self):
         self.board = [ [' ',' ',' '],[' ',' ',' '],[' ',' ',' ']]
+        self.p = ' '
+        
 
 
     def printArr(self):
@@ -10,6 +12,9 @@ class Tictactoe:
              
                 print(self.board[row])
 
+    def place(self,row,col):
+        self.board[row][col] = self.p
+    
     def placePeice(self, peice, row ,col):
         self.board[row][col] = peice
     
