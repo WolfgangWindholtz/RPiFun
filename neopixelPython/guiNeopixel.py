@@ -90,6 +90,8 @@ def clear4():
 def clear(event): 
     Tic.printArr()
     clear4()
+    pixels.show()
+
 
 def place1(event): 
     Tic.place(0,0)
