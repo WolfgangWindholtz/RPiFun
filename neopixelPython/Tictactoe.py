@@ -20,9 +20,9 @@ class Tictactoe:
     
     def clearBoard(self):
         row,col = 3,3
-        for row in range(row):
-            for col in range(col):
-                placePeice(self,' ',row,col)
+        for row in range(3):
+            for col in range(3):
+                self.board[row][col] = ' '
 
     def checkWin(self, p):
         row,col = 3,3
