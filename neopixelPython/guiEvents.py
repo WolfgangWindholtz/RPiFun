@@ -83,8 +83,8 @@ setOButton.grid(column = 3, row = 4)
   
 
 showButton.bind("<Button>",  show) 
-setOButton.bind("<Button>", setX)
-setXButton.bind("<Button>", setO)
+setOButton.bind("<Button>", setO)
+setXButton.bind("<Button>", setX)
 
 Button1.bind("<Button>",  place1) 
 Button2.bind("<Button>",  place2) 
