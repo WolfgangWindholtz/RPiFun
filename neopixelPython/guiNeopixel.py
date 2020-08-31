@@ -76,7 +76,7 @@ def rainbow_cycle(wait):
 
 
 
-def clear():
+def clear4():
     
     Tic.clearBoard()
     
@@ -89,7 +89,7 @@ def clear():
 # keyboard buttons are pressed 
 def clear(event): 
     Tic.printArr()
-    clear()
+    clear4()
 
 def place1(event): 
     Tic.place(0,0)
@@ -180,7 +180,7 @@ setXButton.grid(column = 2, row = 4)
 setOButton.grid(column = 3, row = 4)
   
 
-clearButton.bind("<Button>",  clear) 
+clearButton.bind("<Button>", clear) 
 setOButton.bind("<Button>", setO)
 setXButton.bind("<Button>", setX)
 
